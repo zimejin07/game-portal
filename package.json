@@ -10,10 +10,19 @@
   "devDependencies": {
     "prettier": "^3.2.5",
     "turbo": "^2.0.11",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@types/react-redux": "^7.0.0"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@repo/types": "workspace:*",
+    "@repo/constants": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.2.1",
+    "react-redux": "^7.0.0"
   }
 }

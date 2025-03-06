@@ -1,8 +1,8 @@
-import {CasinoConfig} from "@repo/types";
+import { CasinoConfig } from "@repo/types";
 
 const config: CasinoConfig = {
-    name: "Casino A",
-    menuPosition: "left",
+    name: "Casino B",
+    menuPosition: "right",
 };
 
 export default config;
