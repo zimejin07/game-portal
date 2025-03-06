@@ -1,0 +1,6 @@
+{
+  "users": [
+    { "id": 1, "username": "john_doe", "password": "password123", "market": "en", "name": "John", "surname": "Doe" },
+    { "id": 2, "username": "jane_smith", "password": "securepass", "market": "ca", "name": "Jane", "surname": "Smith" }
+  ]
+}

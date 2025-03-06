@@ -15,7 +15,7 @@ export default function Login({ params }: { params: { market: string } }) {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const res = await fetch("/data/users.json");
+        const res = await fetch("/api/users");
         const data = await res.json();
         const user = data.users.find((u: any) => u.username === username && u.password === password);
 
