@@ -20,6 +20,8 @@ export default function Login({ params }: { params: { market: string } }) {
         const user = data.users.find((u: any) => u.username === username && u.password === password);
 
         if (user && user.market === params.market) {
+            document.cookie = `user=${JSON.stringify(user)}; path=/; max-age=3600`; // Save user in cookies
+            document.cookie = `market=${params.market}; path=/`; // Save market in cookies
             dispatch(setUser({ username: user.username, market: user.market }));
             router.push(`/${params.market}/casino`);
         } else {

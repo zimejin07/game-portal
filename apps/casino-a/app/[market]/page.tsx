@@ -1,12 +1,38 @@
-import Link from "next/link";
+"use client";
 
-export default function MarketHome({ params }: { params: { market: string } }) {
-  return (
-      <div className="text-center">
-        <h2 className="text-2xl font-bold">Welcome to {params.market.toUpperCase()} Market</h2>
-        <Link href={`/${params.market}/login`} className="text-blue-500 underline mt-4 block">
-          Login to Continue
-        </Link>
-      </div>
-  );
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function ProfilePage({ params }: { params: { market: string } }) {
+    const router = useRouter();
+    const [user, setUser] = useState<{ username: string; market: string } | null>(null);
+
+    useEffect(() => {
+        const cookieValue = document.cookie.split("; ").find(row => row.startsWith("user="))?.split("=")[1];
+        if (cookieValue) {
+            setUser(JSON.parse(decodeURIComponent(cookieValue)));
+        }
+    }, []);
+
+    const handleLogout = () => {
+        document.cookie = "user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Clear user cookie
+        router.push(`/${params.market}/login`);
+    };
+
+    return (
+        <div>
+            <h1 className="text-2xl font-bold">My Profile</h1>
+            {user ? (
+                <>
+                    <p>Username: {user.username}</p>
+                    <p>Market: {user.market.toUpperCase()}</p>
+                    <button onClick={handleLogout} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+                        Logout
+                    </button>
+                </>
+            ) : (
+                <p>Loading user...</p>
+            )}
+        </div>
+    );
 }
