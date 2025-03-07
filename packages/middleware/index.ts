@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_MARKET, PROTECTED_ROUTES } from "./config";
+import { PROTECTED_ROUTES } from "./config";
 
 export function middleware(req: NextRequest) {
   const userSession = req.cookies.get("user")?.value;
@@ -8,47 +8,34 @@ export function middleware(req: NextRequest) {
 
   console.log(`🔍 Middleware triggered for: ${url.pathname}`);
 
-  // Fix infinite loop by only redirecting from `/`, not from `/en`
-  if (url.pathname === "/") {
-    console.log("🌍 Redirecting root to default market");
-    return NextResponse.redirect(new URL(`/${DEFAULT_MARKET}`, req.url));
+  // ✅ Ignore Next.js static files
+  if (url.pathname.startsWith("/_next/static/")) {
+    console.log("⚡ Middleware ignoring static files");
+    return NextResponse.next();
   }
 
-  // Fix infinite loop by checking if pathname ALREADY starts with a market
-  if (
-    !userMarket &&
-    !url.pathname.startsWith("/en") &&
-    !url.pathname.startsWith("/ca")
-  ) {
-    console.log("🚨 No market found, using default.");
-    return NextResponse.redirect(
-      new URL(`/${DEFAULT_MARKET}${url.pathname}`, req.url)
-    );
+  // ✅ Ignore API requests (so they don’t get redirected)
+  if (url.pathname.startsWith("/api/")) {
+    console.log("🛑 Skipping middleware for API request.");
+    return NextResponse.next();
   }
 
-  // Ensure users stay in their assigned market
+  // ✅ Ensure users stay in their assigned market
   if (userMarket && !url.pathname.startsWith(`/${userMarket}`)) {
     console.log(`🔄 Redirecting user to assigned market: ${userMarket}`);
-    return NextResponse.redirect(
-      new URL(`/${userMarket}${url.pathname}`, req.url)
-    );
+    return NextResponse.redirect(new URL(`/${userMarket}${url.pathname}`, req.url));
   }
 
-  // Protect sensitive routes (casino, profile) for logged-in users only
-  if (
-    !userSession &&
-    PROTECTED_ROUTES.some((route) => url.pathname.includes(route))
-  ) {
+  // ✅ Protect sensitive routes for logged-in users only
+  if (!userSession && PROTECTED_ROUTES.some(route => url.pathname.includes(route))) {
     console.log("🔒 Protected route accessed. Redirecting to login.");
-    return NextResponse.redirect(
-      new URL(`/${userMarket || DEFAULT_MARKET}/login`, req.url)
-    );
+    return NextResponse.redirect(new URL(`/${userMarket || "en"}/login`, req.url));
   }
 
   return NextResponse.next();
 }
 
-// Apply middleware only to market routes
+// ✅ Update config to exclude API routes
 export const config = {
-  matcher: ["/", "/en/:path*", "/ca/:path*"],
+  matcher: ["/en/:path*", "/ca/:path*"], // No longer applies to `/api/`
 };

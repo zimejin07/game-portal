@@ -7,7 +7,7 @@ interface Params {
 
 const MarketHome = ({ params }: { params: Params }) => (
     <div className="text-center">
-        <h2 className="text-2xl font-bold">Welcome to {params.market.toUpperCase()} Market</h2>
+        <h2 className="text-2xl font-bold">Welcome to Casino B's  {params.market.toUpperCase()} Market</h2>
         <Link href={`/${params.market}/login`} className="text-blue-500 underline mt-4 block">
             Login to Continue
         </Link>
