@@ -15,21 +15,34 @@ export function middleware(req: NextRequest) {
   }
 
   // Fix infinite loop by checking if pathname ALREADY starts with a market
-  if (!userMarket && !url.pathname.startsWith("/en") && !url.pathname.startsWith("/ca")) {
+  if (
+    !userMarket &&
+    !url.pathname.startsWith("/en") &&
+    !url.pathname.startsWith("/ca")
+  ) {
     console.log("🚨 No market found, using default.");
-    return NextResponse.redirect(new URL(`/${DEFAULT_MARKET}${url.pathname}`, req.url));
+    return NextResponse.redirect(
+      new URL(`/${DEFAULT_MARKET}${url.pathname}`, req.url)
+    );
   }
 
   // Ensure users stay in their assigned market
   if (userMarket && !url.pathname.startsWith(`/${userMarket}`)) {
     console.log(`🔄 Redirecting user to assigned market: ${userMarket}`);
-    return NextResponse.redirect(new URL(`/${userMarket}${url.pathname}`, req.url));
+    return NextResponse.redirect(
+      new URL(`/${userMarket}${url.pathname}`, req.url)
+    );
   }
 
   // Protect sensitive routes (casino, profile) for logged-in users only
-  if (!userSession && PROTECTED_ROUTES.some(route => url.pathname.includes(route))) {
+  if (
+    !userSession &&
+    PROTECTED_ROUTES.some((route) => url.pathname.includes(route))
+  ) {
     console.log("🔒 Protected route accessed. Redirecting to login.");
-    return NextResponse.redirect(new URL(`/${userMarket}/login`, req.url));
+    return NextResponse.redirect(
+      new URL(`/${userMarket || DEFAULT_MARKET}/login`, req.url)
+    );
   }
 
   return NextResponse.next();
@@ -37,5 +50,5 @@ export function middleware(req: NextRequest) {
 
 // Apply middleware only to market routes
 export const config = {
-  matcher: ["/", "/en/:path*", "/ca/:path*"]
+  matcher: ["/", "/en/:path*", "/ca/:path*"],
 };
