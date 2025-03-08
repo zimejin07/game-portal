@@ -1,10 +1,10 @@
 export type CasinoConfig = {
-    name: string;
-    menuPosition: "left" | "right";
+  name: string;
+  menuPosition: "left" | "right";
 };
 
 export type Game = {
-    id:'',
-    thumbnail:'',
-    title:''
-}
+  id: string;
+  thumbnail: string;
+  title: string;
+};

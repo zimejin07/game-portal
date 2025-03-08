@@ -4,6 +4,13 @@
   "main": "index.ts",
   "types": "index.ts",
   "exports": {
-    ".": "./index.ts"
+    ".": {
+      "import": "./index.ts",
+      "require": "./index.ts"
+    },
+    "./brandConfig": {
+      "import": "./brandConfig.ts",
+      "require": "./brandConfig.ts"
+    }
   }
 }
