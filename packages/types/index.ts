@@ -8,3 +8,5 @@ export type Game = {
   thumbnail: string;
   title: string;
 };
+
+// TODO update casino config interface and game. and import to brand config file where config is used.

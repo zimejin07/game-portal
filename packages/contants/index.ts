@@ -1,8 +1,2 @@
-export * from "./brandConfig";
-
-export const GAME_NAME = "Casino Game Portal";
-
-export const BRANDS = {
-  CASINO_A: "Casino A",
-  CASINO_B: "Casino B",
-};
+export * from "./brandConfig"; // move to brand config
+// We will extract all const data from our code once we're done.

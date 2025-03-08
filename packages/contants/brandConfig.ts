@@ -12,3 +12,7 @@ export const BRAND_CONFIG = {
     menuPosition: "topbar",
   }
 };
+
+// TODO: Move these to the brand config for each brand
+
+// We will extract all const data from our code once we're done.

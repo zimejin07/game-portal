@@ -33,3 +33,6 @@ export async function getGamesFromDB(): Promise<any[]> {
         request.onerror = () => reject(request.error);
     });
 }
+
+// will need to move this to a shared component file. since we should be able to import it into both casinos. 
+// maybe the lib/utils folder in @repo UI.
