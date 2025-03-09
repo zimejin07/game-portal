@@ -15,7 +15,7 @@ export default function MarketProvider({
 
   return (
     <div style={{ "--brand-color": brand.primaryColor } as React.CSSProperties}>
-      <header className="p-4 bg-[var(--brand-color)] text-white text-center">
+      <header className="p-4 bg-[var(--brand-color)] text-blue-50 text-center">
         <img src={brand.logo} alt={brand.name} className="h-12 mx-auto" />
         <h1 className="text-2xl font-bold">{brand.name}</h1>
       </header>
@@ -36,7 +36,7 @@ export default function MarketProvider({
             </ul>
           </aside>
         )}
-        <main className="flex-1 p-6">{children}</main>
+        <main className="bg-black flex-1 p-6">{children}</main>
       </div>
     </div>
   );

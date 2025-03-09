@@ -68,24 +68,24 @@ export default function CasinoLobby() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Casino Lobby - {market}</h1>
+      <h1 className="text-2xl text-white font-bold mb-4">Casino Lobby - {market}</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {games.map((game, index) => (
           <div
             key={game.id}
             ref={index === games.length - 1 ? lastGameRef : null}
-            className="border p-4 rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
-            onClick={() => router.push(`/${market}/casino/${game.slug}`)} // ✅ Navigate to game page
+            className="border border-green-50 p-4 rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
+            onClick={() => router.push(`/${market}/casino/${game.slug}`)}
           >
             <img
               src={game.meta.thumbnail.src}
               alt={game.name}
               className="w-full h-40 object-cover rounded-md"
             />
-            <h2 className="text-lg font-semibold mt-2">{game.name}</h2>
-            <p className="text-sm text-gray-500">{game.provider.name}</p>
+            <h2 className="text-lg font-semibold mt-2 text-orange-500">{game.name}</h2>
+            <p className="text-sm text-white">{game.provider.name}</p>
 
-            {/* ✅ Show correct button based on login state */}
+            {/* Show correct button based on login state */}
             {isLoggedIn ? (
               <button className="mt-2 bg-green-500 text-white px-4 py-2 w-full rounded hover:bg-green-600">
                 Play for Real
