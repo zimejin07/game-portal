@@ -1,1 +1,1 @@
-export * from "./src/lib/market-provider.tsx";
+export * from "./src/components/ui/market-provider";

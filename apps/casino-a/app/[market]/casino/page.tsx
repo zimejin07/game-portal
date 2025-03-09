@@ -69,7 +69,7 @@ export default function CasinoLobby() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Casino Lobby - {market}</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {games.map((game, index) => (
           <div
             key={game.id}

@@ -2,13 +2,13 @@ export const BRAND_CONFIG = {
   "casino-a": {
     name: "Casino A",
     primaryColor: "#ff5733",
-    logo: "/logos/casino-a.png",
+    logo: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg", // Sorry had to borrow this.
     menuPosition: "sidebar",
   },
   "casino-b": {
     name: "Casino B",
     primaryColor: "#3377ff",
-    logo: "/logos/casino-b.png",
+    logo: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg", // Sorry had to borrow this.
     menuPosition: "topbar",
   }
 };

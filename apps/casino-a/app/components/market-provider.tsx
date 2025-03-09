@@ -21,7 +21,7 @@ export default function MarketProvider({
       </header>
       <div className="flex">
         {brand.menuPosition === "sidebar" && (
-          <aside className="w-64 bg-gray-900 text-white p-4">
+          <aside className="min-h-screen w-32 bg-gray-900 text-white p-4">
             <ul>
               <li>
                 <a href={`/${market}/casino`} className="block p-2">
