@@ -1,6 +1,6 @@
-import "@/app/globals.css";
-import MarketProvider from "./components/market-provider";
 import Providers from "./providers";
+import MarketLayout from "@repo/ui/components/MarketLayout";
+import "@/app/globals.css";
 
 export default function RootLayout({
   children,
@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <MarketProvider>{children}</MarketProvider>
+          <MarketLayout>{children}</MarketLayout>
         </Providers>
       </body>
     </html>

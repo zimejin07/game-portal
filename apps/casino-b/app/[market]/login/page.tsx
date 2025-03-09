@@ -23,8 +23,8 @@ export default function Login() {
     );
 
     if (user && user.market === market) {
-      document.cookie = `user=${JSON.stringify(user)}; path=/; max-age=3600`; // Save user in cookies
-      document.cookie = `market=${market}; path=/`; // Save market in cookies
+      document.cookie = `user=${JSON.stringify(user)}; path=/; max-age=3600`;
+      document.cookie = `market=${market}; path=/`;
       dispatch(setUser({ username: user.username, market: user.market }));
       router.push(`/${market}/casino`);
     } else {

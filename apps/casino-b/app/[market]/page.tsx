@@ -1,18 +1,33 @@
 import Link from "next/link";
-import React from "react";
+import { BRAND_CONFIG } from "@repo/constants/brandConfig";
 
 interface Params {
-    market: string;
+  market: string;
 }
 
-const MarketHome = ({ params }: { params: Params }) => (
-    <div className="text-center">
-        <h2 className="text-2xl font-bold">Welcome to Casino B's  {params.market.toUpperCase()} Market</h2>
-        <Link href={`/${params.market}/login`} className="text-blue-500 underline mt-4 block">
-            Login to Continue
-        </Link>
+const MarketHome = ({ params }: { params: Params }) => {
+  const brand =
+    BRAND_CONFIG[params.market as keyof typeof BRAND_CONFIG] ||
+    BRAND_CONFIG["casino-b"];
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen text-center">
+      <img src={brand.logo} alt={brand.name} className="h-16 mb-4" />
+      <h2 className="text-3xl font-bold text-[var(--brand-color)]">
+        Welcome to {brand.name} - {params.market.toUpperCase()} Market
+      </h2>
+      <p className="text-gray-600 mt-2">
+        The best casino experience tailored for you.
+      </p>
+
+      <Link
+        href={`/${params.market}/login`}
+        className="mt-6 px-6 py-3 bg-[var(--brand-color)] text-white font-semibold rounded-md shadow-md hover:bg-opacity-90 transition"
+      >
+        Login to Continue
+      </Link>
     </div>
-);
+  );
+};
 
-export default MarketHome
-
+export default MarketHome;

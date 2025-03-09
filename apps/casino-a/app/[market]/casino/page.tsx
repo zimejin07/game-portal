@@ -68,7 +68,9 @@ export default function CasinoLobby() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl text-white font-bold mb-4">Casino Lobby - {market}</h1>
+      <h1 className="text-2xl text-white font-bold mb-4">
+        Casino Lobby - {market}
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {games.map((game, index) => (
           <div
@@ -82,7 +84,9 @@ export default function CasinoLobby() {
               alt={game.name}
               className="w-full h-40 object-cover rounded-md"
             />
-            <h2 className="text-lg font-semibold mt-2 text-orange-500">{game.name}</h2>
+            <h2 className="text-lg font-semibold mt-2 text-orange-500">
+              {game.name}
+            </h2>
             <p className="text-sm text-white">{game.provider.name}</p>
 
             {/* Show correct button based on login state */}

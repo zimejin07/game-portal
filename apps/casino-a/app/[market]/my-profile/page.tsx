@@ -27,11 +27,11 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">My Profile</h1>
+      <h1 className="text-2xl text-white font-bold">My Profile</h1>
       {user ? (
         <>
-          <p>Username: {user.username}</p>
-          <p>Market: {user.market.toUpperCase()}</p>
+          <p className="text-white">Username: {user.username}</p>
+          <p className="text-white">Market: {user.market.toUpperCase()}</p>
           <button
             onClick={handleLogout}
             className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
