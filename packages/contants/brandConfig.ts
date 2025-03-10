@@ -25,6 +25,11 @@ export const CASINO_MARKET_RULES: Record<string, string> = {
   "casino-b": "ca",
 };
 
+export const MARKET_TO_CASINO: Record<string, string> = {
+  en: "casino-a",
+  ca: "casino-b",
+};
+
 /*
  * The decision to maintain the BRAND_CONFIG as a centralized global configuration
  * rather than splitting it into per-brand configurations is intentional.
