@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["@testing-library/jest-dom"],
+    "strict": true,
+    "target": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "allowJs": true,
+    "isolatedModules": true
+  },
+  "include": ["packages/**/*", "apps/**/*"]
+}
