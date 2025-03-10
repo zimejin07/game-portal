@@ -13,7 +13,7 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="flex flex-col"
-      style={{ "--brand-color": brand.primaryColor } as React.CSSProperties}
+      style={{ "--brand-color": brand?.primaryColor } as React.CSSProperties}
     >
       {/* Shared Brand Header */}
       <header

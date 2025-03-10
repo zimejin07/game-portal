@@ -59,7 +59,7 @@ export default function CasinoLobby() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-4 justify-center">
         {games.map((game, index) => (
           <div
-            key={game.id}
+            key={`${game.id}-${index}`}
             ref={index === games.length - 1 ? lastGameRef : null}
           >
             <GameCard game={game} isLoggedIn={isLoggedIn} />
