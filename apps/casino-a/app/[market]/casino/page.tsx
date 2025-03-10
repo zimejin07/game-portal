@@ -76,7 +76,7 @@ export default function CasinoLobby() {
           <div
             key={game.id}
             ref={index === games.length - 1 ? lastGameRef : null}
-            className="border border-green-50 p-4 rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
+            className="border p-4 rounded-lg shadow-lg hover:shadow-2xl transition cursor-pointer"
             onClick={() => router.push(`/${market}/casino/${game.slug}`)}
           >
             <img

@@ -1,3 +1,5 @@
+"use client";
+
 import { BRAND_CONFIG } from "@repo/constants/brandConfig";
 import { useParams } from "next/navigation";
 

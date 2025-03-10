@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { BRAND_CONFIG } from "@repo/constants/brandConfig";
 
-export default function MarketLayout({
+export function MarketProvider({
   children,
 }: {
   children: React.ReactNode;

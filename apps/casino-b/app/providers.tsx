@@ -1,4 +1,4 @@
-"use client"; // Required for client-side providers
+"use client";
 
 import { Provider } from "react-redux";
 import { store } from "@repo/store";

@@ -36,7 +36,7 @@ export default function MarketProvider({
             </ul>
           </aside>
         )}
-        <main className="bg-black flex-1 p-6">{children}</main>
+        <main className="flex-1 p-6">{children}</main>
       </div>
     </div>
   );
