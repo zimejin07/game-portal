@@ -2,12 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { UserProfile } from "@repo/types";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [user, setUser] = useState<{ username: string; market: string } | null>(
-    null
-  );
+  const [user, setUser] = useState<UserProfile | null>(null);
   const { market } = useParams();
 
   useEffect(() => {

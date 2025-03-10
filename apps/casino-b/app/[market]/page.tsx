@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { BRAND_CONFIG } from "@repo/constants/brandConfig";
-
-interface Params {
-  market: string;
-}
+import { Params } from "@repo/types";
 
 const MarketHome = ({ params }: { params: Params }) => {
   const brand =

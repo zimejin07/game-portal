@@ -2,11 +2,7 @@
 
 import { BRAND_CONFIG } from "@repo/constants/brandConfig";
 import { useParams } from "next/navigation";
-
-interface ButtonProps {
-  label: string;
-  onClick?: () => void;
-}
+import { ButtonProps } from "@repo/types";
 
 export function Button({ label, onClick }: ButtonProps) {
   const { market } = useParams();

@@ -2,17 +2,22 @@ export const BRAND_CONFIG = {
   "casino-a": {
     name: "Casino A",
     primaryColor: "#ff5733",
-    logo: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg",
+    logo: "",
     menuPosition: "sidebar",
     banner:"https://i.imgur.com/JxNOwFy.png"
   },
   "casino-b": {
     name: "Casino B",
     primaryColor: "#3377ff",
-    logo: "https://tailwindcss.com/_next/static/media/tailwindcss-mark.d52e9897.svg",
+    logo: "",
     menuPosition: "topbar",
     banner:"https://i.imgur.com/xsoH8Kp.png"
   },
+};
+
+export const MARKET_TO_BRAND: Record<string, string> = {
+  en: "casino-a",
+  ca: "casino-b",
 };
 
 /*

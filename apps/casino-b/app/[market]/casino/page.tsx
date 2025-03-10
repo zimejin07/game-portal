@@ -3,14 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { getGamesFromDB, saveGamesToDB } from "@/utils/indexedDB";
 import { GameCard } from "@repo/ui";
-
-interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  meta: { thumbnail: { src: string } };
-  provider: { name: string; aggregator: string };
-}
+import { Game } from "@repo/types";
 
 export default function CasinoLobby() {
   const [games, setGames] = useState<Game[]>([]);
@@ -65,9 +58,12 @@ export default function CasinoLobby() {
       <h1 className="text-2xl font-bold">Casino Lobby</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4 justify-center">
         {games.map((game, index) => (
-            <div key={game.id} ref={index === games.length - 1 ? lastGameRef : null}>
-              <GameCard game={game} isLoggedIn={isLoggedIn} />
-            </div>
+          <div
+            key={game.id}
+            ref={index === games.length - 1 ? lastGameRef : null}
+          >
+            <GameCard game={game} isLoggedIn={isLoggedIn} />
+          </div>
         ))}
       </div>
     </div>

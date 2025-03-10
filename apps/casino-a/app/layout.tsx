@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import MarketProvider from "./components/market-provider";
+import { MarketProvider } from "@repo/ui";
 import Providers from "./providers";
 
 export default function RootLayout({

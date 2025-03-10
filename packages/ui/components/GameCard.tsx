@@ -1,28 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Button } from "./Button";
-
-interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  meta: { thumbnail: { src: string } };
-  provider: { name: string };
-}
-
-interface GameCardProps {
-  game: Game;
-  isLoggedIn: boolean;
-}
+import { GameCardProps } from "@repo/types";
 
 export function GameCard({ game, isLoggedIn }: GameCardProps) {
   const router = useRouter();
+  const { market } = useParams();
 
   return (
     <div
       className="relative flex flex-col bg-gray-800 text-white rounded-lg shadow-md overflow-hidden w-full max-w-xs transition-transform duration-200 hover:scale-105"
-      onClick={() => router.push(`/casino/${game.slug}`)}
+      onClick={() => router.push(`/${market}/casino/${game.slug}`)}
     >
       {/* Game Image */}
       <img

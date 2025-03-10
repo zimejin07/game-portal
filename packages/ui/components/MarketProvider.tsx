@@ -1,35 +1,54 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { BRAND_CONFIG } from "@repo/constants/brandConfig";
+import { BRAND_CONFIG, MARKET_TO_BRAND } from "@repo/constants/brandConfig";
 
 export function MarketProvider({ children }: { children: React.ReactNode }) {
   const { market } = useParams();
-  const brand =
-    BRAND_CONFIG[market as keyof typeof BRAND_CONFIG] ||
-    BRAND_CONFIG["casino-b"];
+
+  // Determine the correct brand based on the market
+  const brandKey = MARKET_TO_BRAND[market as keyof typeof MARKET_TO_BRAND];
+  const brand = BRAND_CONFIG[brandKey as keyof typeof BRAND_CONFIG];
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="flex flex-col"
       style={{ "--brand-color": brand.primaryColor } as React.CSSProperties}
     >
       {/* Shared Brand Header */}
-      <header className="w-full min-h-[30vh] md:min-h-[40vh] bg-[var(--brand-color)] flex flex-col justify-center items-center">
+      <header
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          overflow: "hidden",
+          backgroundColor: "black",
+        }}
+      >
         <img
           src={brand.banner}
           alt={brand.name}
-          className="mx-auto"
+          style={{
+            width: "auto",
+            maxWidth: "100%",
+            height: "auto",
+            maxHeight: "40vh",
+            objectFit: "contain",
+          }}
           loading="lazy"
         />
       </header>
+      {/* Using inline styles here because Tailwind's dynamic class processing
+    does not fully support background images and object-contain 
+    behavior as expected. This ensures full compatibility. */}
 
       {/* Sidebar or Header Menu Based on Brand Config */}
       {brand.menuPosition === "sidebar" ? (
         <div className="flex flex-1">
-          <aside className="min-h-screen w-48 bg-gray-900 text-white p-4">
-            <ul className="space-y-4">
-              <li>
+          <aside className="min-h-screen w-48 bg-[var(--brand-color)] text-white p-4">
+            <ul className="space-y-6">
+              <li className="mb-4">
                 <a
                   href={`/${market}/casino`}
                   className="block p-2 hover:bg-gray-700 rounded"
@@ -37,10 +56,10 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
                   Casino
                 </a>
               </li>
-              <li>
+              <li className="mb-4">
                 <a
                   href={`/${market}/my-profile`}
-                  className="block p-2 hover:bg-gray-700 rounded"
+                  className="block p-2 hover:bg-gray-700 rounded mb-4"
                 >
                   Profile
                 </a>

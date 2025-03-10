@@ -4,12 +4,15 @@ import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "@repo/store/userSlice";
+import { LoginData } from "@repo/types";
 
 export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginData, setLoginData] = useState<LoginData>({
+    username: "",
+    password: "",
+  });
   const [error, setError] = useState("");
   const { market } = useParams();
 
@@ -19,7 +22,8 @@ export default function Login() {
     const res = await fetch("/api/users");
     const data = await res.json();
     const user = data.users.find(
-      (u: any) => u.username === username && u.password === password
+      (u: any) =>
+        u.username === loginData.username && u.password === loginData.password
     );
 
     if (user && user.market === market) {
@@ -40,13 +44,17 @@ export default function Login() {
         <input
           className="border p-2 w-full mb-2"
           placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) =>
+            setLoginData({ ...loginData, username: e.target.value })
+          }
         />
         <input
           type="password"
           className="border p-2 w-full mb-2"
           placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) =>
+            setLoginData({ ...loginData, password: e.target.value })
+          }
         />
         <button
           type="submit"

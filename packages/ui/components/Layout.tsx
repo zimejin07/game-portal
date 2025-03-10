@@ -1,13 +1,13 @@
 "use client";
 
-import { BRAND_CONFIG } from "@repo/constants/brandConfig";
+import { BRAND_CONFIG, MARKET_TO_BRAND } from "@repo/constants/brandConfig";
 import { useParams } from "next/navigation";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { market } = useParams();
-  const brand =
-    BRAND_CONFIG[market as keyof typeof BRAND_CONFIG] ||
-    BRAND_CONFIG["casino-a"];
+  // Determine the correct brand based on the market
+  const brandKey = MARKET_TO_BRAND[market as keyof typeof MARKET_TO_BRAND];
+  const brand = BRAND_CONFIG[brandKey as keyof typeof BRAND_CONFIG];
 
   return (
     <div
