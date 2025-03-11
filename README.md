@@ -73,6 +73,48 @@ Make sure you have Node.js version 18 or higher and PNPM installed. Then, execut
 { "id": 1, "username": "john_doe", "password": "password123", "market": "en", "name": "John", "surname": "Doe" },
 { "id": 2, "username": "jane_smith", "password": "securepass", "market": "ca", "name": "Jane", "surname": "Smith" }
 `
+##### 🔐 Login Behavior
+Users must log in using their credentials.
+After login, users cannot switch markets (/en users stay in /en, /ca users stay in /ca).
+If a Canadian user (/ca) tries to access /en, they are automatically redirected.
+
+##### 🖥️ API & State Management
+Redux Toolkit (RTK) is used for state management.
+Authentication data is stored locally in JSON for simplicity.
+Games are fetched from a mock API.
+IndexedDB is used for storing a large game dataset.
+
+##### 🐳 Docker Support
+1#### #️⃣ Build & Run with Docker
+
+docker-compose up --build
+Casino A runs on http://localhost:3000
+Casino B runs on http://localhost:3001
+
+#### 🛡️ Testing Strategy
+✅ Unit Tests
+Jest & React Testing Library used for testing UI components.
+
+✅ Integration Tests
+Middleware is tested to ensure users can't switch markets after login.
+Mocked API calls are used to simulate real-world data.
+
+#### 🌍 Supported Routes
+Route	Description
+/market	Welcome page
+/market/login	User authentication
+/market/casino	Game lobby
+/market/my-profile	User profile
+/casino/{slug}	Individual game page // Routing only
+
+🔮 Future Improvements
+* Add WebSockets for real-time game updates 
+* Implement Feature Flags for market-based toggles 
+* Individual game page
+* Ability to edit user profile
+
+#### 📞 Contact
+For any issues, feel free to reach out. 🚀
 
 ##### 📜 License
 
