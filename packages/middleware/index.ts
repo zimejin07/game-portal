@@ -7,41 +7,31 @@ export function middleware(req: NextRequest) {
   const userMarket = req.cookies.get("market")?.value;
   const url = req.nextUrl;
 
-  console.log(`🔍 Middleware triggered for: ${url.pathname}`);
-
   // Ignore Next.js static files
   if (url.pathname.startsWith("/_next/static/")) {
-    console.log("⚡ Middleware ignoring static files");
     return NextResponse.next();
   }
 
   // Ignore API requests
   if (url.pathname.startsWith("/api/")) {
-    console.log("🛑 Skipping middleware for API request.");
     return NextResponse.next();
   }
 
-  // Determine market from URL (assuming URLs are /en/casino or /ca/casino)
-  const marketFromURL = url.pathname.split("/")[1]; // Get the first part after "/"
+  const segments = url.pathname.split("/");
+  const marketFromURL = segments[1];
 
+
+  // Validate market from URL
   if (!MARKET_TO_CASINO[marketFromURL]) {
-    console.log(
-      `🚨 Invalid market in URL: ${marketFromURL}. Skipping casino check.`
-    );
+    console.warn(`🚨 Invalid market in URL: ${marketFromURL}. Skipping casino check.`);
     return NextResponse.next();
   }
-
-  const expectedCasino = MARKET_TO_CASINO[marketFromURL];
-
-  console.log(
-    `🎰 User is in market: ${marketFromURL}. Expected casino: ${expectedCasino}`
-  );
 
   // Ensure user is in the correct market
   if (userMarket && userMarket !== marketFromURL) {
-    console.log(`🚨 User market mismatch! Redirecting to /${userMarket}`);
+    console.warn(`🚨 User market mismatch! Redirecting to /${userMarket}`);
     return NextResponse.redirect(
-      new URL(`/${userMarket}${url.pathname}`, req.url)
+        new URL(`/${userMarket}${url.pathname.replace(`/${marketFromURL}`, '')}`, req.url)
     );
   }
 
@@ -50,7 +40,7 @@ export function middleware(req: NextRequest) {
     !userSession &&
     PROTECTED_ROUTES.some((route) => url.pathname.includes(route))
   ) {
-    console.log("🔒 Protected route accessed. Redirecting to login.");
+    console.warn("🔒 Protected route accessed. Redirecting to login.");
     return NextResponse.redirect(new URL(`/${marketFromURL}/login`, req.url));
   }
 

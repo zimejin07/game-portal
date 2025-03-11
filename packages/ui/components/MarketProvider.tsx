@@ -27,8 +27,8 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
         }}
       >
         <img
-          src={brand.banner}
-          alt={brand.name}
+          src={brand?.banner}
+          alt={brand?.name}
           style={{
             width: "auto",
             maxWidth: "100%",
@@ -44,7 +44,7 @@ export function MarketProvider({ children }: { children: React.ReactNode }) {
     behavior as expected. This ensures full compatibility. */}
 
       {/* Sidebar or Header Menu Based on Brand Config */}
-      {brand.menuPosition === "sidebar" ? (
+      {brand?.menuPosition === "sidebar" ? (
         <div className="flex flex-1">
           <aside className="min-h-screen w-48 bg-[var(--brand-color)] text-white p-4">
             <ul className="space-y-6">
