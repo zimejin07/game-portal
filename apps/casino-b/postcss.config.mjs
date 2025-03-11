@@ -1,6 +1,6 @@
 const postcssConfig = {
   plugins: {
-    "@tailwindcss/postcss": {}, // ✅ Use the new package
+    "@tailwindcss/postcss": {}, // Use the new package
     autoprefixer: {},
   },
 };

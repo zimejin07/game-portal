@@ -13,4 +13,4 @@ const config: Config = {
   plugins: [],
 };
 
-export default config; // ✅ Use ES module export
+export default config;

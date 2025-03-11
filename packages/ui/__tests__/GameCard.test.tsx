@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { GameCard } from "../components/GameCard";
 import { Game } from "@repo/types";
 
-// Mock Next.js router properly
+// Mock Next.js router
 const mockPush = jest.fn();
 
 jest.mock("next/navigation", () => ({

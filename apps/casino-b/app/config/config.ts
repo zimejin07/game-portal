@@ -1,10 +1,7 @@
 // Local configuration object for casino brands
 export const CASINO_BRAND_CONFIG = {
   "casino-b": {
-    // Name of the casino brand
     name: "Casino B",
-    
-    // List of routes that are restricted for this casino brand
     restrictedRoutes: ["/my-profile"],
   },
 };

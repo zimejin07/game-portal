@@ -1,7 +1,6 @@
 // Local configuration object for casino brands
 export const CASINO_BRAND_CONFIG = {
   "casino-a": {
-    // Name of the casino brand
     name: "Casino A",
     
     // List of routes that are restricted for this casino brand
@@ -10,5 +9,5 @@ export const CASINO_BRAND_CONFIG = {
 };
 
 /* 
- * This local configuration is best used as an override to the global config.
+ * This local configuration is ideal as an override to the global config. Though it's out of scope for this task
  */

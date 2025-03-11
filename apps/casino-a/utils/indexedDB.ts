@@ -34,5 +34,4 @@ export async function getGamesFromDB(): Promise<any[]> {
     });
 }
 
-// will need to move this to a shared component file. since it should be able imported it into both casinos. 
-// maybe the lib/utils folder in @repo UI.
+// TODO:Move this to a shared component file. since it should be able imported it into both casinos.

@@ -1,0 +1,7 @@
+node_modules
+.pnpm
+turbo
+.next
+dist
+.env
+.DS_Store

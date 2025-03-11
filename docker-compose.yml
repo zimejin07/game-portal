@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  casino-a:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app/apps/casino-a
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    command: ["pnpm", "run", "start"]
+    volumes:
+      - .:/app  # Mounts the project directory
+      - /app/node_modules  # Avoids conflicts with local node_modules
+    restart: unless-stopped
+
+  casino-b:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app/apps/casino-b
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: production
+    command: ["pnpm", "run", "start"]
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped

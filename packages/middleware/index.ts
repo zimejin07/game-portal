@@ -47,7 +47,6 @@ export function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Apply middleware only to market-based routes
 export const config = {
   matcher: ["/en/:path*", "/ca/:path*"],
 };
