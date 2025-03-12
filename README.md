@@ -93,6 +93,8 @@ docker-compose up --build
 Casino A runs on http://localhost:3000
 Casino B runs on http://localhost:3001
 
+![img.png](img.png)
+
 #### 🛡️ Testing Strategy
 ✅ Unit Tests
 Jest & React Testing Library used for testing UI components.
