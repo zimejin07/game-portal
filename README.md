@@ -117,6 +117,22 @@ Route	Description
 * Individual game page
 * Ability to edit user profile
 
+#### 🔧 Troubleshooting
+Module Not Found Errors
+If you encounter an error like:
+
+Error: Cannot find module '@reduxjs/toolkit'
+
+or Module not found: Can't resolve 'some-package'
+
+Try the following:
+
+1️⃣ Install the missing package at the root of the project:
+
+`pnpm install <missing-package>`
+
+`docker-compose up --build --force-recreate`
+
 #### 📞 Contact
 For any issues, feel free to reach out. 🚀
 
