@@ -21,6 +21,7 @@ export type User = {
   username: string;
   email: string;
   market: "en" | "ca";
+  password: string;
 };
 
 // Props for GameCard component
@@ -56,3 +57,8 @@ export type MarketParams = {
 export type Params = {
   market: string;
 };
+
+export interface PageProps {
+  params: Params;
+  market: string;
+}

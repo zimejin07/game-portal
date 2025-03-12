@@ -9,9 +9,11 @@ A Next.js 15 monorepo for a casino game portal, built with Turborepo, TypeScript
 3. Start the development server with `pnpm dev`
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## To start specific applications, use: `pnpm dev:casino_a` or `pnpm dev:casino_b`
+## To start specific applications, 
+use: `pnpm dev:casino_a` or `pnpm dev:casino_b`
 
-## To execute tests, use: `pnpm test`
+## To execute tests, 
+use: `pnpm test`
 
 ### Notes
 
@@ -19,16 +21,16 @@ Make sure you have Node.js version 18 or higher and PNPM installed. Then, execut
 
 ### 📂 Monorepo Structure
 
-/apps # Next.js applications
-├── casino-a # Casino A app
-├── casino-b # Casino B app
-/packages # Shared libraries
-├── ui # Shared UI components (React)
-├── store # Global state (Redux Toolkit)
-├── types # TypeScript types
-├── constants # Shared constants
-├── middleware # Next.js middleware
-├── eslint-config # Centralized ESLint rules
+1. [ ] /apps # Next.js applications
+2. [ ] ├── casino-a # Casino A app
+3. [ ] ├── casino-b # Casino B app
+4. [ ] /packages # Shared libraries
+5. [ ] ├── ui # Shared UI components (React)
+6. [ ] ├── store # Global state (Redux Toolkit)
+7. [ ] ├── types # TypeScript types
+8. [ ] ├── constants # Shared constants
+9. [ ] ├── middleware # Next.js middleware
+10. [ ] ├── eslint-config # Centralized ESLint rules
 
 #### 🛠 Key Technologies
 
@@ -85,7 +87,7 @@ Games are fetched from a mock API.
 IndexedDB is used for storing a large game dataset.
 
 ##### 🐳 Docker Support
-1#### #️⃣ Build & Run with Docker
+#### #️⃣ Build & Run with Docker
 
 docker-compose up --build
 Casino A runs on http://localhost:3000
@@ -101,11 +103,11 @@ Mocked API calls are used to simulate real-world data.
 
 #### 🌍 Supported Routes
 Route	Description
-/market	Welcome page
-/market/login	User authentication
-/market/casino	Game lobby
-/market/my-profile	User profile
-/casino/{slug}	Individual game page // Routing only
+* /market	Welcome page
+* /market/login	User authentication
+* /market/casino	Game lobby
+* /market/my-profile	User profile
+* /casino/{slug}	Individual game page // Routing only
 
 🔮 Future Improvements
 * Add WebSockets for real-time game updates 

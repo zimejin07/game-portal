@@ -1,6 +1,4 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+const config = {
   content: [
     "../../apps/casino-a/app/**/*.{js,ts,jsx,tsx}", // Scan Casino A pages
     "../../apps/casino-b/app/**/*.{js,ts,jsx,tsx}", // Scan Casino B pages

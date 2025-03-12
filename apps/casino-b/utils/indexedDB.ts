@@ -19,7 +19,7 @@ export async function saveGamesToDB(games: any[]) {
     const tx = db.transaction("games", "readwrite");
     const store = tx.objectStore("games");
     games.forEach(game => store.put(game));
-    return tx.complete;
+    return tx.oncomplete;
 }
 
 export async function getGamesFromDB(): Promise<any[]> {

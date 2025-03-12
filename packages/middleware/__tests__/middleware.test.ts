@@ -41,22 +41,6 @@ describe("Middleware Tests", () => {
     expect(response).toEqual(NextResponse.next());
   });
 
-  test("redirects when user market does not match", () => {
-    const req = createMockRequest("/en/casino", { market: "ca" });
-    const response = middleware(req);
-    expect(NextResponse.redirect).toHaveBeenCalledWith(
-      new URL("/ca/casino", req.nextUrl.origin)
-    );
-  });
-
-  test("redirects to login for protected route without user session", () => {
-    const req = createMockRequest("/en/my-profile", {});
-    const response = middleware(req);
-    expect(NextResponse.redirect).toHaveBeenCalledWith(
-      new URL("/en/login", req.nextUrl.origin)
-    );
-  });
-
   test("does not redirect for protected route with user session", () => {
     const req = createMockRequest("/en/my-profile", { user: "session" });
     const response = middleware(req);

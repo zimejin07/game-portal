@@ -1,10 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { BRAND_CONFIG } from "@repo/constants/brandConfig";
-import { Params } from "@repo/types";
+import { useParams } from "next/navigation";
 
-const MarketHome = ({ params }: { params: Params }) => {
+const MarketHome = () => {
+  const { market } = useParams();
   const brand =
-    BRAND_CONFIG[params.market as keyof typeof BRAND_CONFIG] ||
+    BRAND_CONFIG[market as keyof typeof BRAND_CONFIG] ||
     BRAND_CONFIG["casino-a"];
 
   return (
@@ -13,12 +16,12 @@ const MarketHome = ({ params }: { params: Params }) => {
       <h2 className="text-3xl font-bold text-[var(--brand-color)] tracking-wide">
         Welcome to{" "}
         <span className="text-[var(--accent-color)]">{brand.name}</span> -{" "}
-        {params.market.toUpperCase()} Market
+        {JSON.stringify(market).toUpperCase()} Market
       </h2>
       <p className="text-gray-600 mt-2 max-w-md">Your Next Adventure Awaits.</p>
 
       <Link
-        href={`/${params.market}/login`}
+        href={`/${market}/login`}
         className="mt-6 px-8 py-4 bg-[var(--brand-color)] text-white font-semibold rounded-lg shadow-lg hover:bg-opacity-90 transition duration-200"
       >
         Login to Continue

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "@repo/store/userSlice";
-import { LoginData } from "@repo/types";
+import { LoginData, User } from "@repo/types";
 
 export default function Login() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export default function Login() {
     const res = await fetch("/api/users");
     const data = await res.json();
     const user = data.users.find(
-      (u: any) =>
+      (u: User) =>
         u.username === loginData.username && u.password === loginData.password
     );
 
